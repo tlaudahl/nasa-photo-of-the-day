@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 export default function Photo(props) {
     if (props.media_type === 'video') {
         return (

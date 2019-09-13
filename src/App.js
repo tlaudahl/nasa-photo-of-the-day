@@ -1,11 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import styled from "styled-components";
 import "./App.css";
 
 // Component Imports
 import Photo from './components/Photo';
 import Header from './components/Header';
 import Explanation from './components/Explanation';
+
+const AppDiv = styled.div`
+  margin: 0 auto;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+`
 
 function App() {
   const [photo, setPhoto] = useState({});
@@ -22,11 +33,11 @@ function App() {
     })
 }, [apiDate]);
   return (
-    <div className="App">
-      <Header title={photo.title} copyright={photo.copyright} date={photo.date} setApiDate={setApiDate} apiDate={apiDate}/>
+    <AppDiv>
+      <Header title={photo.title} copyright={photo.copyright} date={photo.date} setApiDate={setApiDate} apiDate={apiDate} />
       <Photo media_type={photo.media_type} mediaSrc={photo.url} title={photo.title} hdUrl={photo.hdurl}/>
       <Explanation explanation={photo.explanation}/>
-    </div>
+    </AppDiv>
   );
 }
 
