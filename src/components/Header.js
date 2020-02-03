@@ -1,15 +1,21 @@
 import React from 'react'
 import styled from "styled-components";
 
+var moment = require('moment');
+
 const HeaderDiv = styled.div`
     display: flex;
     width: 100%;
     justify-content: space-evenly;
     align-items: center;
     margin-bottom: 1%;
+    position: absolute;
+    top: 0;
 `
 
 export default function Header(props) {
+    const today = moment().format('YYYY MM DD').split(' ').join('-');
+    console.log(today);
 
     function changeDate(event) {
         props.setApiDate(event.target.value);
@@ -18,10 +24,9 @@ export default function Header(props) {
     if (props.copyright === undefined || props.copyright === null || props.copyright === '') {
         return (
             <HeaderDiv>
-                <img src={require('../logo.png')} alt='logo' width='100px' height='100px' />
                 <div className='row'>
                     <p>Photo Of The Day Date: {props.date}</p>
-                    Select a new date: <input type="date" id="photoDate" min="1995-06-16" max="2019-09-12" value={props.apiDate} onChange={changeDate}/>
+                    Select a new date: <input type="date" id="photoDate" min="1995-06-16" max={today} value={props.apiDate} onChange={changeDate}/>
                 </div>
             <h4>{props.title}</h4>
         </HeaderDiv>
@@ -29,7 +34,6 @@ export default function Header(props) {
     } else {
         return (
             <HeaderDiv>
-                <img src={require('../logo.png')} alt='logo' width='100px' height='100px' />
                 <div className='row'>
                     <p>Photo Of The Day Date: {props.date}</p>
                     Select a new date: <input type="date" id="photoDate" min="1995-06-16" max="2019-09-12" value={props.apiDate} onChange={changeDate}/>
