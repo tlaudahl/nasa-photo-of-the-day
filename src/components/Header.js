@@ -11,38 +11,20 @@ const HeaderDiv = styled.div`
     margin-bottom: 1%;
     position: absolute;
     top: 0;
+    color: #fff;
 `
 
 export default function Header(props) {
     const today = moment().format('YYYY MM DD').split(' ').join('-');
-    console.log(today);
 
     function changeDate(event) {
         props.setApiDate(event.target.value);
     }
-
-    if (props.copyright === undefined || props.copyright === null || props.copyright === '') {
-        return (
-            <HeaderDiv>
-                {/* <div className='row'> */}
-                    <p>Photo Of The Day Date: {props.date}</p>
-                    Select a new date: <input type="date" id="photoDate" min="1995-06-16" max={today} value={props.apiDate} onChange={changeDate}/>
-                {/* </div> */}
-                <h4>{props.title}</h4>
-            </HeaderDiv>
-        )
-    } else {
-        return (
-            <HeaderDiv>
-                {/* <div className='row'> */}
-                    <p>Photo Of The Day Date: {props.date}</p>
-                    Select a new date: <input type="date" id="photoDate" min="1995-06-16" max={today} value={props.apiDate} onChange={changeDate}/>
-                {/* </div> */}
-                {/* // <div className='row'> */}
-                    <h3>{props.title}</h3>
-                    {/* <h4>&copy; {props.copyright}</h4> */}
-                {/* </div> */}
-            </HeaderDiv>
-        )
-    }
+    return (
+        <HeaderDiv>
+            <p>Photo Of The Day Date: {props.date}</p>
+            Select a new date: <input type="date" id="photoDate" min="1995-06-16" max={today} value={props.apiDate} onChange={changeDate}/>
+            <h3>{props.title}</h3>
+        </HeaderDiv>
+    )
 }

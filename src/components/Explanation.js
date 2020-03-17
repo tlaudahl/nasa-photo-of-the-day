@@ -20,16 +20,27 @@ const ExplanationPara = styled.p`
 `
 
 export default function Explanation(props) {
-    console.log(props.copyright)
     return (
         <ExplanationDiv>
+            {props.media_type === 'video' ? 
             <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                <h3 style={{ color: 'white', textShadow: '2px #dddddd' }}>Photo Explanation</h3>
+                <h3 style={{ color: 'white', textShadow: '2px #dddddd' }}>Video Explanation</h3>
                 {props.copyright && 
                 <h3 style={{ color: 'white', textShadow: '2px #dddddd' }}>&copy; {props.copyright}</h3>
                 }
-                
-            </div>
+            </div> : props.media_type === 'image' ? 
+            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                <h3 style={{ color: 'white', textShadow: '2px #dddddd' }}>Picture Explanation</h3>
+                {props.copyright && 
+                <h3 style={{ color: 'white', textShadow: '2px #dddddd' }}>&copy; {props.copyright}</h3>
+                }
+            </div> : 
+            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                <h3 style={{ color: 'white', textShadow: '2px #dddddd' }}>Picture Explanation</h3>
+                {props.copyright && 
+                <h3 style={{ color: 'white', textShadow: '2px #dddddd' }}>&copy; {props.copyright}</h3>
+                }
+            </div>}
             <ExplanationPara>{props.explanation}</ExplanationPara>
         </ExplanationDiv>
     )

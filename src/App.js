@@ -24,18 +24,18 @@ function App() {
     axios
     .get(`https://api.nasa.gov/planetary/apod?api_key=I25spDL6a1G0WuHcmPF7lXd8TgrRzGppv9dg5pvP&date=${apiDate}`)
     .then(response => {
-        const photo = response.data;
-        setPhoto(photo);
+        setPhoto(response.data);
     })
     .catch(error => {
         console.log('The NASA API could not be reached', error);
     })
 }, [apiDate]);
+
   return (
     <div>
       <Header title={photo.title} copyright={photo.copyright} date={photo.date} setApiDate={setApiDate} apiDate={apiDate} />
       <Photo media_type={photo.media_type} mediaSrc={photo.url} title={photo.title} hdUrl={photo.hdurl}/>
-      <Explanation explanation={photo.explanation} copyright={photo.copyright} />
+      <Explanation media_type={photo.media_type} explanation={photo.explanation} copyright={photo.copyright} />
     </div>
   );
 }
