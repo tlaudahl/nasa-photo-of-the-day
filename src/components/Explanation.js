@@ -20,9 +20,16 @@ const ExplanationPara = styled.p`
 `
 
 export default function Explanation(props) {
+    console.log(props.copyright)
     return (
         <ExplanationDiv>
-            <h3 style={{ color: 'white', textShadow: '2px #dddddd' }}>Photo Explanation</h3>
+            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                <h3 style={{ color: 'white', textShadow: '2px #dddddd' }}>Photo Explanation</h3>
+                {props.copyright && 
+                <h3 style={{ color: 'white', textShadow: '2px #dddddd' }}>&copy; {props.copyright}</h3>
+                }
+                
+            </div>
             <ExplanationPara>{props.explanation}</ExplanationPara>
         </ExplanationDiv>
     )

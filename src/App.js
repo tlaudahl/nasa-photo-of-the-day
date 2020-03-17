@@ -22,7 +22,7 @@ function App() {
   const [apiDate, setApiDate] = useState(today);
   useEffect(() => {
     axios
-    .get(`https://api.nasa.gov/planetary/apod?api_key=krbpcHPEGT17nSngcBn42n2chF1bgvgtSnraVZuW&date=${apiDate}`)
+    .get(`https://api.nasa.gov/planetary/apod?api_key=I25spDL6a1G0WuHcmPF7lXd8TgrRzGppv9dg5pvP&date=${apiDate}`)
     .then(response => {
         const photo = response.data;
         setPhoto(photo);
@@ -35,7 +35,7 @@ function App() {
     <div>
       <Header title={photo.title} copyright={photo.copyright} date={photo.date} setApiDate={setApiDate} apiDate={apiDate} />
       <Photo media_type={photo.media_type} mediaSrc={photo.url} title={photo.title} hdUrl={photo.hdurl}/>
-      <Explanation explanation={photo.explanation}/>
+      <Explanation explanation={photo.explanation} copyright={photo.copyright} />
     </div>
   );
 }
